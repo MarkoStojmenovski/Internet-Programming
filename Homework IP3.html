@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function date(){
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
+
+                today = mm + '/' + dd + '/' + yyyy;
+                document.write(today);
+            }
+
+            function calculateArea(){
+                var A = parseFloat(document.getElementById("A").value);
+                var B = parseFloat(document.getElementById("B").value);
+                var C = parseFloat(document.getElementById("C").value);
+                var p = (A + B + C)/2;
+                var area = Math.sqrt(p * ((p - A) * (p - B) * (p - C)));
+                document.getElementById("area").innerHTML = area;
+            }
+            function animatedstring(id) {
+            var element = document.getElementById(id);            
+            var textNode = document.getElementById("animateArea");            
+            textNode.innerHTML = element.value;
+            var text = textNode.innerHTML;
+
+            setInterval(function () {
+                text = text[text.length - 1] + text.substring(0, text.length - 1);            
+                document.getElementById("animateArea").innerHTML = text;
+                }, 200);
+            }
+            function guessNumber() {
+            var num = Math.round(Math.random() * 10);
+            var gnum = prompt('Find the number between 1 and 10');
+            if (gnum == num)
+                alert('Matched');
+            else
+                alert('Not matched, the number was ' + num);
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <h2><script>date();</script></h2>
+        </div>
+        <div>
+            <h3>Triangle Area Calculator</h3>
+            <input type="text" name="A" id="A" value="" size="3" label = "A" placeholder="A"> 
+            <input type="text" name="B" id="B" value="" size="3" label = "B" placeholder="B">
+            <input type="text" name="C" id="C" value="" size="3" label = "C" placeholder="C">
+    
+            <input type="button" name="calculateArea" value="Calculate" onclick="calculateArea()">
+            <p id="area" name="area"></p>
+    
+        </div>
+        <div>
+            <h3>Text animator</h3>       
+                <input type="text" name="targetInput" id="targetInput">
+        
+                <input type="button" name="animate" value="Start" onclick="animatedstring('targetInput')">
+                <p id="animateArea" name="animateArea"></p>
+        </div>
+        <div>
+            <h3>Number finder</h3>
+            <input type="button" name="guess" value="Find" onclick="guessNumber()">
+         </div>
+    </body>
+
+</html>
