@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script type="text/javascript">
+        function loadText(){
+            if(window.XMLHttpRequest){
+                text = new XMLHttpRequest();
+            }else{
+                text=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            text.onreadystatechange=function(){
+                if (text.readyState==4 && text.status==200){
+		    document.getElementById("text").innerHTML=text.responseText;
+            }
+        }
+        text.open("GET", "Exam.txt", true);
+        text.send();
+    }
+        </script>
+        <body>
+            <p id="text">This is some text</p>
+            <button type="button" onclick="loadText()">Read file</button>
+        </body>
+    </head>
+</html>
